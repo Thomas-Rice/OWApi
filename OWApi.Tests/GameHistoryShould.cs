@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using OWApi.Controllers;
 using Newtonsoft.Json;
 using Shouldly;
 
@@ -7,14 +6,14 @@ using Shouldly;
 namespace OWApi.Tests
 {
     [TestFixture]
-    public class AddGameResultShould
+    public class GameHistoryShould
     {
 
 
         [Test]
         public void ReturnASingleGameResultFromDatabase()
         {
-            var gameHistory = new GetGameHistoryController().Get(1);
+            var gameHistory = new GameHistory().GetSingleGameHistory(1);
 
             var result = JsonConvert.DeserializeObject<GamesJsonObject>(gameHistory);
 
@@ -26,7 +25,7 @@ namespace OWApi.Tests
         [Test]
         public void ReturnAllResultsFromDatabase()
         {
-            var gameHistory = new GetGameHistoryController().Get();
+            var gameHistory = new GameHistory().GetGameHistory();
 
             var result = JsonConvert.DeserializeObject<GamesJsonObject>(gameHistory);
 
@@ -38,7 +37,18 @@ namespace OWApi.Tests
         [Test]
         public void AddGameToDataBase()
         {
-            
+
+            var gameHistory = new GameHistory();
+            gameHistory.AddGameResult(150, 3, "woo");
+            //var gameHistory2 = new GameHistory();
+            //var results = gameHistory2.GetGameHistory();
+
+            //var result = JsonConvert.DeserializeObject<GamesJsonObject>(results);
+
+            //result.Games.Count.ShouldBe(3);
+            //result.Games[0].Result.ShouldBe("W");
+            //result.Games[1].Result.ShouldBe("W");
+            //result.Games[2].Result.ShouldBe("woo");
         }
 
         [Test]

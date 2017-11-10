@@ -16,21 +16,21 @@ namespace OWApi
 
         public string GetGameHistory()
         {
-            return SerializeObject(new GetHistoryQuery().GetGameResults(_sqlConnection));
+            return SerializeObject(new GetHistoryQuery(_sqlConnection).GetGameResults());
         }
 
 
         public string GetSingleGameHistory(int index)
         {
-            return SerializeObject(new GetHistoryQuery().GetSingleGameResult(_sqlConnection, index));
+            return SerializeObject(new GetHistoryQuery(_sqlConnection).GetSingleGameResult(index));
         }
 
-        //public string AddGameResult(GameResult gameResult)
-        //{
-        //    _gameResults.Add(gameResult);
-
-        //    return SerializeObject(_gameResults);
-        //}
+        public string AddGameResult(int score, int streak, string result)
+        {
+            var gameHistory = new GetHistoryQuery(_sqlConnection);
+            gameHistory.AddGameResult(score, streak, result);
+            return SerializeObject(gameHistory.GetGameResults());
+        }
 
         public string SerializeObject(List<GameResult> listToSerialize)
         {
