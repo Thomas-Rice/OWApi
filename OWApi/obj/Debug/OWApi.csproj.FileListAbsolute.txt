@@ -1,0 +1,17 @@
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\OWApi.dll.config
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\OWApi.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\OWApi.pdb
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\Newtonsoft.Json.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\System.Net.Http.Formatting.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\System.Web.Http.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\System.Web.Http.WebHost.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\Newtonsoft.Json.xml
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\System.Net.Http.Formatting.xml
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\System.Web.Http.xml
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\System.Web.Http.WebHost.xml
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\obj\Debug\OWApi.csprojResolveAssemblyReference.cache
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\obj\Debug\OWApi.csproj.CoreCompileInputs.cache
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\obj\Debug\OWApi.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\obj\Debug\OWApi.pdb
