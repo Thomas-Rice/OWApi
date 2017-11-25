@@ -1,91 +1,58 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using Dapper;
 
 namespace OWApi.Queries
 {
     public class GetHistoryQuery
     {
-        private readonly List<GameResult> _gameResults = new List<GameResult>();
-        private readonly SqlConnection _connection;
+        private readonly IDbConnection _connection;
 
-        public GetHistoryQuery(SqlConnection connection)
+        public GetHistoryQuery()
         {
-            _connection = connection;
+            _connection = new SqlConnection(ConfigurationManager.ConnectionStrings["OWAPIDB"].ConnectionString);
         }
 
-        public List<GameResult> GetGameResults()
+        public List<Table1> GetGameResults()
         {
-            var queryString = @"SELECT [Id]
-                                  ,[Score]
-                                  ,[Streak]
-                                  ,[Result]
-                              FROM[dbo].[Table_1]";
-
             using (_connection)
             {
-                var command = new SqlCommand(queryString, _connection);
-                _connection.Open();
-                AddToGameResults(command);
+                return _connection.Query<Table1>("USPGetGameResults", commandType: CommandType.StoredProcedure).ToList();
             }
-            return _gameResults;
+
         }
 
-        public List<GameResult> GetSingleGameResult(int index)
+        public List<Table1> GetSingleGameResult(int index)
         {
-            var queryString = @"SELECT [Id]
-                                  ,[Score]
-                                  ,[Streak]
-                                  ,[Result]
-                              FROM[dbo].[Table_1]" +
-                              $"WHERE[Id] = {index}";
-
             using (_connection)
             {
-                var command = new SqlCommand(queryString, _connection);
-                _connection.Open();
-                AddToGameResults(command);
+                return _connection.Query<Table1>("USPGetSingleGameResult", new {Index = index}, commandType: CommandType.StoredProcedure).ToList();
             }
-            return _gameResults;
         }
-
-
 
         public void AddGameResult(int score, int streak, string result)
         {
-            var queryString = @"INSERT INTO [dbo].[Table_1]
-                                ([Score]
-                                ,[Streak]
-                                ,[Result])" +
-                              "VALUES(@score, @streak, @result)";
-                                
             using (_connection)
             {
-                var command = new SqlCommand(queryString, _connection);
-                command.Parameters.AddWithValue("@Score", score);
-                command.Parameters.AddWithValue("@Streak", streak);
-                command.Parameters.AddWithValue("@Result", result);
+                _connection.Query<Table1>("USPAddSingleGameResult", new { Score = score , Streak = streak, Result = result }, commandType: CommandType.StoredProcedure);
 
-                _connection.Open();
-                command.ExecuteNonQuery();
             }
 
         }
 
-        private void AddToGameResults(SqlCommand command)
+        private void deleteSingleGameResult(int index)
         {
-            using (var reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    _gameResults.Add(new GameResult()
-                    {
-                        Index = reader.GetInt32(0),
-                        Score = reader.GetInt32(1),
-                        Streak = reader.GetInt32(2),
-                        Result = reader.GetString(3)
-                    });
-                }
-            }
+            throw new NotImplementedException();
         }
+
+        private void deleteMultipleGameResults(bool all, int? index = null)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

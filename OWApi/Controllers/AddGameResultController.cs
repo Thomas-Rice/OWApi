@@ -15,7 +15,7 @@ namespace OWApi.Controllers
                 Score = score,
                 Streak = streak
             };
-            return new GameHistory().GetGameHistory();
+            return "";
         }
 
     }

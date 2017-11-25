@@ -18,3 +18,5 @@ C:\Users\thomas.rice\Source\Repos\OWApi\OWApi.Tests\obj\Debug\OWApi.Tests.csproj
 C:\Users\thomas.rice\Source\Repos\OWApi\OWApi.Tests\obj\Debug\OWApi.Tests.csproj.CoreCompileInputs.cache
 C:\Users\thomas.rice\Source\Repos\OWApi\OWApi.Tests\obj\Debug\OWApi.Tests.dll
 C:\Users\thomas.rice\Source\Repos\OWApi\OWApi.Tests\obj\Debug\OWApi.Tests.pdb
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi.Tests\bin\Debug\Dapper.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi.Tests\bin\Debug\Dapper.xml

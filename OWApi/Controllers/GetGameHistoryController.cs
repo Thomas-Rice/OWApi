@@ -1,19 +1,46 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web.Http;
+using Dapper;
 
 namespace OWApi.Controllers
 {
     public class GetGameHistoryController : ApiController
     {
         // GET: api/GetGameHistory
-        public string Get()
+        public List<Table1> Get()
         {
-            return new GameHistory().GetGameHistory();
+
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["OWAPI-DB"].ConnectionString))
+            {
+                return db.Query<Table1>(
+                                          @"SELECT [Id]
+                                          ,[Score]
+                                          ,[Streak]
+                                          ,[Result]
+                                          FROM[dbo].[Table_1]").ToList();
+            }
+
         }
 
         // GET: api/GetGameHistory/5
-        public string Get(int index)
+        public List<Table1> Get(int index)
         {
-            return new GameHistory().GetSingleGameHistory(index);
+
+            using (IDbConnection db = new SqlConnection(ConfigurationManager.ConnectionStrings["OWAPIDB"].ConnectionString))
+            {
+                return db.Query<Table1>(
+                                          @"SELECT [Id]
+                                          ,[Score]
+                                          ,[Streak]
+                                          ,[Result]
+                                          FROM[dbo].[Table_1]" +
+                                          $"WHERE[Id] = {index}").ToList();
+            }
+
         }
     }
 }

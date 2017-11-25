@@ -1,5 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using Newtonsoft.Json;
+using OWApi.Controllers;
 using Shouldly;
 
 
@@ -13,33 +15,29 @@ namespace OWApi.Tests
         [Test]
         public void ReturnASingleGameResultFromDatabase()
         {
-            var gameHistory = new GameHistory().GetSingleGameHistory(1);
+            var result = new GameHistory().GetSingleGameHistory(1);
 
-            var result = JsonConvert.DeserializeObject<GamesJsonObject>(gameHistory);
 
-            result.Games.Count.ShouldBe(1);
-            result.Games[0].Result.ShouldBe("W");
+            result.Count.ShouldBe(1);
+            result[0].Result.ShouldBe("W");
         }
 
 
         [Test]
         public void ReturnAllResultsFromDatabase()
         {
-            var gameHistory = new GameHistory().GetGameHistory();
+            var result = new GameHistory().GetGameHistory();
 
-            var result = JsonConvert.DeserializeObject<GamesJsonObject>(gameHistory);
+            result.Count.ShouldBe(2);
 
-            result.Games.Count.ShouldBe(2);
-            result.Games[0].Result.ShouldBe("W");
-            result.Games[1].Result.ShouldBe("W");
         }
 
-        [Test]
-        public void AddGameToDataBase()
-        {
+        //[Test]
+        //public void AddGameToDataBase()
+        //{
 
-            var gameHistory = new GameHistory();
-            gameHistory.AddGameResult(150, 3, "woo");
+        //    var gameHistory = new GameHistory();
+        //    gameHistory.AddGameResult(150, 3, "woo");
             //var gameHistory2 = new GameHistory();
             //var results = gameHistory2.GetGameHistory();
 
@@ -51,10 +49,10 @@ namespace OWApi.Tests
             //result.Games[2].Result.ShouldBe("woo");
         }
 
-        [Test]
-        public void TestDbConnection()
-        {
-            new ConnectionCreator().CreateConnection();
-        }
+        //[Test]
+        //public void TestDbConnection()
+        //{
+        //    new ConnectionCreator().CreateConnection();
+        //}
     }
-}
+

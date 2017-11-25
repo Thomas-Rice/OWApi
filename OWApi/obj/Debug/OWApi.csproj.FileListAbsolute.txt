@@ -15,3 +15,8 @@ C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\obj\Debug\OWApi.csprojResolveAssem
 C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\obj\Debug\OWApi.csproj.CoreCompileInputs.cache
 C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\obj\Debug\OWApi.dll
 C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\obj\Debug\OWApi.pdb
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\Dapper.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\Dapper.xml
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\nunit.framework.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\Shouldly.dll
+C:\Users\thomas.rice\Source\Repos\OWApi\OWApi\bin\nunit.framework.xml
